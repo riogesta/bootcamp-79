@@ -1,0 +1,127 @@
+1. Write a query in SQL to find the name and year of the movies.
+
+jawaban :
+SELECT
+    mov_title, mov_year
+FROM 
+    movie
+    
+    
+    
+2. Write a query in SQL to find the year when the movie American Beauty released.
+
+jawaban :
+SELECT
+    mov_year
+FROM 
+    movie
+WHERE
+    mov_title = 'American Beauty'
+
+
+
+3. Write a query in SQL to find the movie which was released in the year 1999.
+
+jawaban :
+SELECT
+    mov_title
+FROM 
+    movie
+WHERE
+    mov_year = '1999'
+
+
+
+4. Write a query in SQL to find the movies which was released before 1998.
+
+jawaban :
+SELECT
+    mov_title
+FROM 
+    movie
+WHERE
+    mov_year < '1998'
+    
+
+
+
+5. Write a query in SQL to return the name of all reviewers and name of movies together in a single list.
+
+jawaban :
+SELECT
+    reviewer.rev_name, movie.mov_title
+FROM 
+    reviewer
+INNER JOIN
+    rating ON rating.rev_id = reviewer.rev_id
+INNER JOIN
+    movie ON movie.mov_id = rating.mov_id
+WHERE reviewer.rev_name IS NOT NULL
+
+
+
+
+6. Write a query in SQL to find the name of all reviewers who have rated 7 or more stars to their rating. 
+
+jawaban :
+SELECT
+    reviewer.rev_name, movie.mov_title, rating.rev_stars
+FROM 
+    reviewer, rating, movie
+WHERE reviewer.rev_name IS NOT NULL AND rating.rev_stars >= 7 AND reviewer.rev_id = rating.rev_id
+
+
+
+
+7. Write a query in SQL to find the titles of all movies that have no ratings.
+
+jawaban :
+SELECT
+    reviewer.rev_name, movie.mov_title, rating.rev_stars
+FROM 
+    reviewer
+INNER JOIN
+    rating ON rating.rev_id = reviewer.rev_id
+INNER JOIN
+    movie ON movie.mov_id = rating.mov_id
+WHERE reviewer.rev_name IS NULL
+
+
+
+8. Write a query in SQL to find the titles of the movies with ID 905, 907, 917.
+
+jawaban :
+SELECT
+    mov_id, mov_title
+FROM 
+    movie
+WHERE mov_id IN ('905', '907', '917')
+
+
+
+9. Write a query in SQL to find the list of all those movies with year which include the words Boogie Nights.
+
+jawaban :
+SELECT
+    mov_id, mov_title, mov_year
+FROM 
+    movie
+WHERE mov_title LIKE '%Boogie Nights%'
+
+
+
+
+10. Write a query in SQL to find the ID number for the actor whose first name is 'Woody' and the last name is ‘Allen.
+
+jawaban :
+SELECT
+    movie.mov_title, movie.mov_year, actor.act_fname, actor.act_lname
+FROM 
+    movie
+INNER JOIN movie_cast ON movie_cast.mov_id = movie.mov_id
+INNER JOIN actor ON actor.act_id = movie_cast.act_id
+WHERE actor.act_fname = 'Woody' AND actor.act_lname = 'Allen'
+
+
+
+
