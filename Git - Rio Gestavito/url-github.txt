@@ -1,1 +1,1 @@
- https://github.com/riogesta/latihan-git-79
+https://github.com/riogesta/bootcamp-79
